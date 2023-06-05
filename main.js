@@ -7,5 +7,10 @@ window.addEventListener('keydown', function(e){
   key.classList.add('playing');
 });
 
+function removeTransition(e){
+  if (e.propertyName !== 'transform') return; //skip it if its not a transform
+  this.classList.remove('playing');
+}
+
 const keys = document.querySelectorAll('.key');
 keys.forEach(key => key.addEventListener('transitioned', removeTransition));
